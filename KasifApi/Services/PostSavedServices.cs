@@ -37,7 +37,7 @@ namespace KasifApi.Services
 
             return new PostSavedDto
             {
-                Id = postSaved.Id,
+                Id = postSaved.PostSavedId,
                 CustomerId = postSaved.CustomerId,
                 PostId = postSaved.PostId
             };
@@ -78,7 +78,7 @@ namespace KasifApi.Services
 
             return savedPosts.Select(postSaved => new PostSavedDto
             {
-                Id = postSaved.Id,
+                Id = postSaved.PostSavedId,
                 CustomerId = postSaved.CustomerId,
                 PostId = postSaved.PostId
             }).ToList();

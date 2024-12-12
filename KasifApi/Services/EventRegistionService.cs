@@ -30,7 +30,7 @@ public class EventRegistionService : IEventRegistion
 
         return new EventRegistionDto
         {
-            Id = eventRegistion.Id,
+            Id = eventRegistion.EventRegistionId,
             PostId = eventRegistion.PostId,
             CustomerId = eventRegistion.CustomerId,
             Created = eventRegistion.Created
@@ -43,7 +43,7 @@ public class EventRegistionService : IEventRegistion
         return await _context.EventRegistions
             .Select(e => new EventRegistionDto
             {
-                Id = e.Id,
+                Id = e.EventRegistionId,
                 PostId = e.PostId,
                 CustomerId = e.CustomerId,
                 Created = e.Created
@@ -54,13 +54,13 @@ public class EventRegistionService : IEventRegistion
     // ID ile kayıt getir
     public async Task<EventRegistionDto?> GetByIdAsync(int id)
     {
-        var eventRegistion = await _context.EventRegistions.FirstOrDefaultAsync(e => e.Id == id);
+        var eventRegistion = await _context.EventRegistions.FirstOrDefaultAsync(e => e.EventRegistionId == id);
 
         if (eventRegistion == null) return null;
 
         return new EventRegistionDto
         {
-            Id = eventRegistion.Id,
+            Id = eventRegistion.EventRegistionId,
             PostId = eventRegistion.PostId,
             CustomerId = eventRegistion.CustomerId,
             Created = eventRegistion.Created
@@ -70,7 +70,7 @@ public class EventRegistionService : IEventRegistion
     // ID ile kayıt sil
     public async Task<bool> DeleteAsync(int id)
     {
-        var eventRegistion = await _context.EventRegistions.FirstOrDefaultAsync(e => e.Id == id);
+        var eventRegistion = await _context.EventRegistions.FirstOrDefaultAsync(e => e.EventRegistionId == id);
 
         if (eventRegistion == null) return false;
 

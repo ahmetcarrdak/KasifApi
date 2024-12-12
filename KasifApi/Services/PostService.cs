@@ -21,7 +21,7 @@ namespace KasifApi.Services
             {
                 CustomerId = postCreateDto.CustomerId,
                 GalleryId = postCreateDto.GalleryId,
-                AddressesId = postCreateDto.AddressesId,
+                AddressId = postCreateDto.AddressesId,
                 Description = postCreateDto.Description,
                 IsActived = true,
                 IsDeleted = false
@@ -32,10 +32,10 @@ namespace KasifApi.Services
 
             return new PostDto
             {
-                Id = post.Id,
+                Id = post.PostId,
                 CustomerId = post.CustomerId,
                 GalleryId = post.GalleryId,
-                AddressesId = post.AddressesId,
+                AddressesId = post.AddressId,
                 Description = post.Description,
                 IsActived = post.IsActived,
                 IsDeleted = post.IsDeleted
@@ -46,7 +46,7 @@ namespace KasifApi.Services
         {
             var post = await _context.Posts
                 .Include(p => p.Customer)
-                .FirstOrDefaultAsync(p => p.Id == postId);
+                .FirstOrDefaultAsync(p => p.PostId == postId);
 
             if (post == null)
             {
@@ -55,10 +55,10 @@ namespace KasifApi.Services
 
             return new PostDto
             {
-                Id = post.Id,
+                Id = post.PostId,
                 CustomerId = post.CustomerId,
                 GalleryId = post.GalleryId,
-                AddressesId = post.AddressesId,
+                AddressesId = post.AddressId,
                 Description = post.Description,
                 IsActived = post.IsActived,
                 IsDeleted = post.IsDeleted
@@ -73,10 +73,10 @@ namespace KasifApi.Services
 
             return posts.Select(post => new PostDto
             {
-                Id = post.Id,
+                Id = post.PostId,
                 CustomerId = post.CustomerId,
                 GalleryId = post.GalleryId,
-                AddressesId = post.AddressesId,
+                AddressesId = post.AddressId,
                 Description = post.Description,
                 IsActived = post.IsActived,
                 IsDeleted = post.IsDeleted
@@ -86,7 +86,7 @@ namespace KasifApi.Services
         public async Task<string> UpdatePostAsync(PostUpdateDto postUpdateDto)
         {
             var post = await _context.Posts
-                .FirstOrDefaultAsync(p => p.Id == postUpdateDto.Id);
+                .FirstOrDefaultAsync(p => p.PostId == postUpdateDto.Id);
 
             if (post == null)
             {
@@ -106,7 +106,7 @@ namespace KasifApi.Services
         public async Task<string> ToggleDeleteAsync(int postId)
         {
             var post = await _context.Posts
-                .FirstOrDefaultAsync(p => p.Id == postId);
+                .FirstOrDefaultAsync(p => p.PostId == postId);
 
             if (post == null)
             {
@@ -123,7 +123,7 @@ namespace KasifApi.Services
         public async Task<string> ToggleActivateAsync(int postId)
         {
             var post = await _context.Posts
-                .FirstOrDefaultAsync(p => p.Id == postId);
+                .FirstOrDefaultAsync(p => p.PostId == postId);
 
             if (post == null)
             {

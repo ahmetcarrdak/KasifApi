@@ -40,7 +40,7 @@ namespace KasifApi.Services
         // Mesajı okundu olarak işaretle
         public async Task<Message> MarkAsReadAsync(int messageId)
         {
-            var message = await _context.Messages.Include(message => message.FromUser).FirstOrDefaultAsync(m => m.Id == messageId);
+            var message = await _context.Messages.Include(message => message.FromUser).FirstOrDefaultAsync(m => m.MessageId == messageId);
 
             if (message == null)
             {
@@ -65,7 +65,7 @@ namespace KasifApi.Services
                 .Where(m => m.To == userId)
                 .Select(m => new MessageResponseDto
                 {
-                    Id = m.Id,
+                    Id = m.MessageId,
                     From = m.From,
                     To = m.To,
                     Type = m.Type,
@@ -84,7 +84,7 @@ namespace KasifApi.Services
                 .Where(m => (m.From == fromUserId && m.To == toUserId) || (m.From == toUserId && m.To == fromUserId))
                 .Select(m => new MessageResponseDto
                 {
-                    Id = m.Id,
+                    Id = m.MessageId,
                     From = m.From,
                     To = m.To,
                     Type = m.Type,

@@ -39,12 +39,12 @@ namespace KasifApi.Services
 
             return new FollowingDto
             {
-                Id = newFollow.Id,
+                Id = newFollow.FollowingId,
                 From = newFollow.From,
                 To = newFollow.To,
                 Created = DateTime.UtcNow,
-                FromUser = new Customer { Id = newFollow.From, Name = "From User" }, // İlgili kullanıcı bilgilerini buraya ekleyin
-                ToUser = new Customer { Id = newFollow.To, Name = "To User" } // Aynı şekilde buraya da ekleyin
+                FromUser = new Customer { CustomerId = newFollow.From, Name = "From User" }, // İlgili kullanıcı bilgilerini buraya ekleyin
+                ToUser = new Customer { CustomerId = newFollow.To, Name = "To User" } // Aynı şekilde buraya da ekleyin
             };
         }
 
@@ -54,11 +54,11 @@ namespace KasifApi.Services
             return await _context.Followings
                 .Select(f => new FollowingDto
                 {
-                    Id = f.Id,
+                    Id = f.FollowingId,
                     From = f.From,
                     To = f.To,
-                    FromUser = new Customer { Id = f.From, Name = "From User" },  // İlgili kullanıcı bilgilerini buraya ekleyin
-                    ToUser = new Customer { Id = f.To, Name = "To User" } // Aynı şekilde buraya da ekleyin
+                    FromUser = new Customer {CustomerId = f.From, Name = "From User" },  // İlgili kullanıcı bilgilerini buraya ekleyin
+                    ToUser = new Customer { CustomerId = f.To, Name = "To User" } // Aynı şekilde buraya da ekleyin
                 })
                 .ToListAsync();
         }
@@ -87,10 +87,10 @@ namespace KasifApi.Services
 
             // Takipçi kullanıcı bilgilerini almak
             var followerDetails = await _context.Customers
-                .Where(c => followers.Contains(c.Id)) // Takipçi ID'lerine göre filtreleme
+                .Where(c => followers.Contains(c.CustomerId)) // Takipçi ID'lerine göre filtreleme
                 .Select(c => new Customer
                 {
-                    Id = c.Id,
+                    CustomerId = c.CustomerId,
                     Name = c.Name
                 })
                 .ToListAsync();

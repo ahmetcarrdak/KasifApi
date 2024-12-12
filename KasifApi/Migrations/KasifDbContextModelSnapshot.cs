@@ -22,13 +22,54 @@ namespace KasifApi.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("KasifApi.Models.Customer", b =>
+            modelBuilder.Entity("KasifApi.Models.Address", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AddressId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AddressId"));
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("County")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Latitude")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Longitude")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("posteCode")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("road")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("AddressId");
+
+                    b.ToTable("Address");
+                });
+
+            modelBuilder.Entity("KasifApi.Models.Customer", b =>
+                {
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CustomerId"));
 
                     b.Property<int>("AddressesId")
                         .HasColumnType("integer");
@@ -76,7 +117,7 @@ namespace KasifApi.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("CustomerId");
 
                     b.HasIndex("GalleryId");
 
@@ -87,11 +128,11 @@ namespace KasifApi.Migrations
 
             modelBuilder.Entity("KasifApi.Models.EventRegistion", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("EventRegistionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("EventRegistionId"));
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
@@ -102,7 +143,7 @@ namespace KasifApi.Migrations
                     b.Property<int>("PostId")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("EventRegistionId");
 
                     b.HasIndex("CustomerId");
 
@@ -113,57 +154,57 @@ namespace KasifApi.Migrations
 
             modelBuilder.Entity("KasifApi.Models.Following", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("FollowingId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("FollowingId"));
 
                     b.Property<int>("From")
                         .HasColumnType("integer");
 
-                    b.Property<int>("FromUserId")
+                    b.Property<int>("FromUserCustomerId")
                         .HasColumnType("integer");
 
                     b.Property<int>("To")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ToUserId")
+                    b.Property<int>("ToUserCustomerId")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("FollowingId");
 
-                    b.HasIndex("FromUserId");
+                    b.HasIndex("FromUserCustomerId");
 
-                    b.HasIndex("ToUserId");
+                    b.HasIndex("ToUserCustomerId");
 
                     b.ToTable("Followings");
                 });
 
             modelBuilder.Entity("KasifApi.Models.Gallery", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("GalleryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("GalleryId"));
 
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("GalleryId");
 
                     b.ToTable("Galleries");
                 });
 
             modelBuilder.Entity("KasifApi.Models.Message", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("MessageId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("MessageId"));
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -175,7 +216,7 @@ namespace KasifApi.Migrations
                     b.Property<int>("From")
                         .HasColumnType("integer");
 
-                    b.Property<int>("FromUserId")
+                    b.Property<int>("FromUserCustomerId")
                         .HasColumnType("integer");
 
                     b.Property<bool>("IsRead")
@@ -184,39 +225,39 @@ namespace KasifApi.Migrations
                     b.Property<int>("PostId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ReadById")
+                    b.Property<int>("ReadByCustomerId")
                         .HasColumnType("integer");
 
                     b.Property<int>("To")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ToUserId")
+                    b.Property<int>("ToUserCustomerId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.HasKey("MessageId");
 
-                    b.HasIndex("FromUserId");
+                    b.HasIndex("FromUserCustomerId");
 
                     b.HasIndex("PostId");
 
-                    b.HasIndex("ReadById");
+                    b.HasIndex("ReadByCustomerId");
 
-                    b.HasIndex("ToUserId");
+                    b.HasIndex("ToUserCustomerId");
 
                     b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("KasifApi.Models.Notification", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("NotificationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("NotificationId"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -234,7 +275,7 @@ namespace KasifApi.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("NotificationId");
 
                     b.HasIndex("UserId");
 
@@ -243,13 +284,13 @@ namespace KasifApi.Migrations
 
             modelBuilder.Entity("KasifApi.Models.Post", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PostId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PostId"));
 
-                    b.Property<int>("AddressesId")
+                    b.Property<int>("AddressId")
                         .HasColumnType("integer");
 
                     b.Property<int>("CustomerId")
@@ -259,30 +300,53 @@ namespace KasifApi.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("GalleryId")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("GalleryId")
+                        .HasColumnType("integer");
 
                     b.Property<bool>("IsActived")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsComment")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsCommentWrite")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
-                    b.HasKey("Id");
+                    b.Property<bool>("IsLike")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsLikeCount")
+                        .HasColumnType("boolean");
+
+                    b.Property<int?>("PartnerShareId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SchoolId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("PostId");
+
+                    b.HasIndex("AddressId");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("GalleryId");
+
+                    b.HasIndex("SchoolId");
 
                     b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("KasifApi.Models.PostSaved", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PostSavedId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PostSavedId"));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("integer");
@@ -290,7 +354,7 @@ namespace KasifApi.Migrations
                     b.Property<int>("PostId")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("PostSavedId");
 
                     b.HasIndex("CustomerId");
 
@@ -301,11 +365,35 @@ namespace KasifApi.Migrations
 
             modelBuilder.Entity("KasifApi.Models.School", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("SchoolId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("SchoolId"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Faks")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Logo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -315,7 +403,11 @@ namespace KasifApi.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.Property<string>("WebSite")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("SchoolId");
 
                     b.ToTable("Schools");
                 });
@@ -362,13 +454,13 @@ namespace KasifApi.Migrations
                 {
                     b.HasOne("KasifApi.Models.Customer", "FromUser")
                         .WithMany()
-                        .HasForeignKey("FromUserId")
+                        .HasForeignKey("FromUserCustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("KasifApi.Models.Customer", "ToUser")
                         .WithMany()
-                        .HasForeignKey("ToUserId")
+                        .HasForeignKey("ToUserCustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -381,7 +473,7 @@ namespace KasifApi.Migrations
                 {
                     b.HasOne("KasifApi.Models.Customer", "FromUser")
                         .WithMany()
-                        .HasForeignKey("FromUserId")
+                        .HasForeignKey("FromUserCustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -393,13 +485,13 @@ namespace KasifApi.Migrations
 
                     b.HasOne("KasifApi.Models.Customer", "ReadBy")
                         .WithMany()
-                        .HasForeignKey("ReadById")
+                        .HasForeignKey("ReadByCustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("KasifApi.Models.Customer", "ToUser")
                         .WithMany()
-                        .HasForeignKey("ToUserId")
+                        .HasForeignKey("ToUserCustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -425,13 +517,37 @@ namespace KasifApi.Migrations
 
             modelBuilder.Entity("KasifApi.Models.Post", b =>
                 {
+                    b.HasOne("KasifApi.Models.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("KasifApi.Models.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("KasifApi.Models.Gallery", "Gallery")
+                        .WithMany()
+                        .HasForeignKey("GalleryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("KasifApi.Models.School", "School")
+                        .WithMany()
+                        .HasForeignKey("SchoolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Address");
+
                     b.Navigation("Customer");
+
+                    b.Navigation("Gallery");
+
+                    b.Navigation("School");
                 });
 
             modelBuilder.Entity("KasifApi.Models.PostSaved", b =>

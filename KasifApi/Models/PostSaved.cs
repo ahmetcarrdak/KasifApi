@@ -2,7 +2,7 @@ namespace KasifApi.Models;
 
 public class PostSaved
 {
-    public int Id { get; set; }
+    public int PostSavedId { get; set; }
     public int CustomerId { get; set; }
     public int PostId { get; set; }
     

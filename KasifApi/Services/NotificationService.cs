@@ -25,7 +25,7 @@ namespace KasifApi.Services
 
             return notifications.Select(n => new NotificationDto
             {
-                Id = n.Id,
+                Id = n.NotificationId,
                 Message = n.Message,
                 IsRead = n.IsRead,
                 CreatedAt = n.CreatedAt
@@ -35,7 +35,7 @@ namespace KasifApi.Services
         // Bildirimi okundu olarak işaretle
         public async Task<NotificationDto> MarkAsReadAsync(int notificationId)
         {
-            var notification = await _context.Notifications.FirstOrDefaultAsync(n => n.Id == notificationId);
+            var notification = await _context.Notifications.FirstOrDefaultAsync(n => n.NotificationId == notificationId);
             if (notification == null)
                 return null;
 
@@ -47,7 +47,7 @@ namespace KasifApi.Services
 
             return new NotificationDto
             {
-                Id = notification.Id,
+                Id = notification.NotificationId,
                 Message = notification.Message,
                 IsRead = notification.IsRead,
                 CreatedAt = notification.CreatedAt

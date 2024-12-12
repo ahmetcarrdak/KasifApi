@@ -134,3 +134,4 @@
 /Users/ahmetcardak/Desktop/KasifApi/KasifApi/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/ahmetcardak/Desktop/KasifApi/KasifApi/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/ahmetcardak/Desktop/KasifApi/KasifApi/bin/Debug/net8.0/runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll
+/Users/ahmetcardak/Desktop/KasifApi/KasifApi/obj/Debug/net8.0/KasifApi.sourcelink.json

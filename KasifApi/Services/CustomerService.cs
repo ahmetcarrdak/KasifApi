@@ -92,7 +92,7 @@ public class CustomerService : ICustomer
     // Müşteriyi ID'ye göre getirme
     public async Task<Customer?> GetByIdAsync(int customerId)
     {
-        return await _context.Customers.FirstOrDefaultAsync(c => c.Id == customerId);
+        return await _context.Customers.FirstOrDefaultAsync(c => c.CustomerId == customerId);
     }
 
     // Kullancı adına göre kontrol
@@ -107,7 +107,7 @@ public class CustomerService : ICustomer
     public async Task<string> UpdateAsync(CustomerUpdateDto customerUpdateDto)
     {
         // Güncellenecek müşteri var mı kontrol et
-        var customer = await _context.Customers.FirstOrDefaultAsync(c => c.Id == customerUpdateDto.ImageId);
+        var customer = await _context.Customers.FirstOrDefaultAsync(c => c.CustomerId == customerUpdateDto.ImageId);
 
         if (customer == null)
         {
@@ -138,7 +138,7 @@ public class CustomerService : ICustomer
     // IsDeleted özelliğini toggle eden metot
     public async Task<string> ToggleDeleteAsync(int customerId)
     {
-        var customer = await _context.Customers.FirstOrDefaultAsync(c => c.Id == customerId);
+        var customer = await _context.Customers.FirstOrDefaultAsync(c => c.CustomerId == customerId);
 
         if (customer == null)
         {
@@ -159,7 +159,7 @@ public class CustomerService : ICustomer
     // IsActive özelliğini toggle eden metot
     public async Task<string> ToggleActivateAsync(int customerId)
     {
-        var customer = await _context.Customers.FirstOrDefaultAsync(c => c.Id == customerId);
+        var customer = await _context.Customers.FirstOrDefaultAsync(c => c.CustomerId == customerId);
 
         if (customer == null)
         {

@@ -7,5 +7,6 @@ namespace KasifApi.Interfaces
     {
         Task<List<School>> GetAllSchoolsAsync();
         Task<School?> GetSchoolByIdAsync(int id);
+        Task<string> CreateSchoolAsync(School school);
     }
 }

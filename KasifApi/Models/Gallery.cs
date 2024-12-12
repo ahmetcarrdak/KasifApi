@@ -2,6 +2,6 @@ namespace KasifApi.Models;
 
 public class Gallery
 {
-    public int Id { get; set; }
+    public int GalleryId { get; set; }
     public string Image { get; set; }
 }

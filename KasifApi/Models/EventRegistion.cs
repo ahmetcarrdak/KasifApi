@@ -2,7 +2,7 @@ namespace KasifApi.Models;
 
 public class EventRegistion
 {
-    public int Id { get; set; }
+    public int EventRegistionId { get; set; }
     public int PostId { get; set; }
     public int CustomerId { get; set; }
     public DateTime Created { get; set; }

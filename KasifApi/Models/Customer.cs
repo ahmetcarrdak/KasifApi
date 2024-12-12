@@ -2,7 +2,7 @@ namespace KasifApi.Models;
 
 public class Customer
 {
-    public int Id { get; set; }
+    public int CustomerId { get; set; }
     public int ImageId { get; set; }
     public string Name { get; set; }
     public string Email { get; set; }

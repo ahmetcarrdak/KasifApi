@@ -41,7 +41,7 @@ public class CustomerController : ControllerBase
             return Conflict("Bu kullanıcı adı zaten kullanılıyor.");
         }
 
-        return CreatedAtAction(nameof(GetById), new { id = customer.Id }, customer);
+        return CreatedAtAction(nameof(GetById), new { id = customer.CustomerId }, customer);
     }
 
     // ID ile Kullanıcı Getirme

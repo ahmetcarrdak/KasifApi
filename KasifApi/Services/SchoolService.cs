@@ -21,7 +21,7 @@ namespace KasifApi.Services
             var schools = await _context.Schools.ToListAsync();
             return schools.Select(s => new School
             {
-                Id = s.Id,
+                SchoolId = s.SchoolId,
                 Type = s.Type,
                 Title = s.Title
             }).ToList();
@@ -30,7 +30,7 @@ namespace KasifApi.Services
         // Belirli bir okul bilgisi getirme
         public async Task<School?> GetSchoolByIdAsync(int id)
         {
-            var school = await _context.Schools.FirstOrDefaultAsync(s => s.Id == id);
+            var school = await _context.Schools.FirstOrDefaultAsync(s => s.SchoolId == id);
 
             if (school == null)
             {
@@ -39,10 +39,20 @@ namespace KasifApi.Services
 
             return new School
             {
-                Id = school.Id,
+                SchoolId = school.SchoolId,
                 Type = school.Type,
                 Title = school.Title
             };
         }
+
+        public async Task<string> CreateSchoolAsync(School school)
+        {
+            // Okul nesnesini veritabanına ekliyoruz
+            _context.Schools.Add(school);
+            await _context.SaveChangesAsync();
+
+            return "success";  // Okul nesnesini döndürüyoruz
+        }
+
     }
 }

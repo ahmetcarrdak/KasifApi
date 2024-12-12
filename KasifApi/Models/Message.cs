@@ -2,7 +2,7 @@ namespace KasifApi.Models;
 
 public class Message
 {
-    public int Id { get; set; }
+    public int MessageId { get; set; }
     public int From { get; set; }
     public int To { get; set; }
     public string Type { get; set; }

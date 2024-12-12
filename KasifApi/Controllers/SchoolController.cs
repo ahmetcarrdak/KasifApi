@@ -36,5 +36,23 @@ namespace KasifApi.Controllers
 
             return Ok(school);
         }
+
+        [HttpPost("Add")]
+        public async Task<IActionResult> CreateSchoolsAsync([FromBody] List<School> schools)
+        {
+            if (schools == null || !schools.Any())
+            {
+                return BadRequest("No schools provided.");
+            }
+
+            foreach (var school in schools)
+            {
+                await _schoolService.CreateSchoolAsync(school); // Her bir okulu veritabanına ekle
+            }
+
+            return Ok("Schools added successfully.");
+        }
+
+
     }
 }
