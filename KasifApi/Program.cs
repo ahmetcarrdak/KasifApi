@@ -19,6 +19,7 @@ builder.Services.AddScoped<IPost, PostService>();
 builder.Services.AddScoped<IPostSaved, PostSavedService>();
 builder.Services.AddScoped<ISchool, SchoolService>();
 
+
 // CORS yapılandırması
 builder.Services.AddCors(options =>
 {
@@ -42,6 +43,7 @@ builder.Services.AddControllers()
 // Swagger/OpenAPI desteği
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
 var app = builder.Build();
 

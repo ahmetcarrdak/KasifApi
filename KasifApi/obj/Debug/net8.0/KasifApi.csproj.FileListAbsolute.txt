@@ -135,3 +135,12 @@
 /Users/ahmetcardak/Desktop/KasifApi/KasifApi/obj/Debug/net8.0/KasifApi.pdb
 /Users/ahmetcardak/Desktop/KasifApi/KasifApi/obj/Debug/net8.0/KasifApi.genruntimeconfig.cache
 /Users/ahmetcardak/Desktop/KasifApi/KasifApi/obj/Debug/net8.0/ref/KasifApi.dll
+/Users/ahmetcardak/Desktop/KasifApi/KasifApi/bin/Debug/net8.0/Amazon.Lambda.APIGatewayEvents.dll
+/Users/ahmetcardak/Desktop/KasifApi/KasifApi/bin/Debug/net8.0/Amazon.Lambda.ApplicationLoadBalancerEvents.dll
+/Users/ahmetcardak/Desktop/KasifApi/KasifApi/bin/Debug/net8.0/Amazon.Lambda.AspNetCoreServer.dll
+/Users/ahmetcardak/Desktop/KasifApi/KasifApi/bin/Debug/net8.0/Amazon.Lambda.AspNetCoreServer.Hosting.dll
+/Users/ahmetcardak/Desktop/KasifApi/KasifApi/bin/Debug/net8.0/Amazon.Lambda.Core.dll
+/Users/ahmetcardak/Desktop/KasifApi/KasifApi/bin/Debug/net8.0/Amazon.Lambda.Logging.AspNetCore.dll
+/Users/ahmetcardak/Desktop/KasifApi/KasifApi/bin/Debug/net8.0/Amazon.Lambda.RuntimeSupport.dll
+/Users/ahmetcardak/Desktop/KasifApi/KasifApi/bin/Debug/net8.0/Amazon.Lambda.Serialization.SystemTextJson.dll
+/Users/ahmetcardak/Desktop/KasifApi/KasifApi/bin/Debug/net8.0/SnapshotRestore.Registry.dll
