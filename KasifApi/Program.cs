@@ -59,7 +59,7 @@ app.UseCors("AllowAll");
 
 app.UseRouting();
 // Health check
-app.MapGet("/health", () => Results.Ok("Healthy"));
+app.MapGet("/health", () => "Healthy");
 app.UseAuthorization();
 app.MapControllers();
 

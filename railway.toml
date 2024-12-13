@@ -6,4 +6,4 @@ dockerfilePath = "./KasifApi/Dockerfile"
 startCommand = "./KasifApi"
 restartPolicyType = "always"
 healthcheckPath = "/health"
-healthcheckTimeout = 10
+healthcheckTimeout = 30
