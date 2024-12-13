@@ -40,6 +40,7 @@ builder.Services.AddControllers()
 // Swagger/OpenAPI desteği
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks();
 builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
 var app = builder.Build();
@@ -59,7 +60,7 @@ app.UseCors("AllowAll");
 
 app.UseRouting();
 // Health check
-app.MapGet("/health", () => "Healthy");
+app.UseHealthChecks("/health");
 app.UseAuthorization();
 app.MapControllers();
 
