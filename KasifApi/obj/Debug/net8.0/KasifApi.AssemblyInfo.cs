@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KasifApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c75b53131a9cee383b8b153b7a771b9323dbc43")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4224a431423142737ee5123e034e5004b80c17e9")]
 [assembly: System.Reflection.AssemblyProductAttribute("KasifApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KasifApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

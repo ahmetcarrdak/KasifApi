@@ -2,7 +2,6 @@ using KasifApi.Data;
 using KasifApi.Interfaces;
 using KasifApi.Services;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.X509Certificates;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,18 +18,16 @@ builder.Services.AddScoped<IPost, PostService>();
 builder.Services.AddScoped<IPostSaved, PostSavedService>();
 builder.Services.AddScoped<ISchool, SchoolService>();
 
-
 // CORS yapılandırması
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
         policy.AllowAnyOrigin()
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     });
 });
-
 
 // JSON döndürme seçeneklerini yapılandır (isteğe bağlı)
 builder.Services.AddControllers()
@@ -54,10 +51,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// CORS kullanımı
-app.UseCors("AllowSpecificOrigins");
-
+// Bu satır HTTPS yönlendirmesini devre dışı bırakır
 app.UseHttpsRedirection();
+
+// CORS kullanımı
+app.UseCors("AllowAll");
+
+app.UseRouting();
+
 app.UseAuthorization();
 app.MapControllers();
 
