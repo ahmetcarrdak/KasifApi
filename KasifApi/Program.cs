@@ -49,6 +49,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.MapGet("/test", () => "API is working!");
+
+app.MapGet("/api/test", () => new { message = "Hello from KasifAPI!", timestamp = DateTime.UtcNow });
+
 // Bu satır HTTPS yönlendirmesini devre dışı bırakır
 app.UseHttpsRedirection();
 // CORS kullanımı
