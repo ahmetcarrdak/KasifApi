@@ -49,7 +49,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+// Bu satır HTTPS yönlendirmesini devre dışı bırakır
+app.UseHttpsRedirection();
 // CORS kullanımı
 app.UseCors("AllowAll");
 
