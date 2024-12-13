@@ -40,10 +40,13 @@ builder.Services.AddControllers()
 // Swagger/OpenAPI desteği
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHealthChecks();
-builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
 var app = builder.Build();
+
+app.MapGet("/health", () => Results.Ok());
+
+// HTTPS yönlendirmesini kaldır
+// app.UseHttpsRedirection();
 
 // HTTP istek boru hattını yapılandır
 if (app.Environment.IsDevelopment())
@@ -52,15 +55,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Bu satır HTTPS yönlendirmesini devre dışı bırakır
-app.UseHttpsRedirection();
-
 // CORS kullanımı
 app.UseCors("AllowAll");
 
 app.UseRouting();
-// Health check
-app.UseHealthChecks("/health");
 app.UseAuthorization();
 app.MapControllers();
 
