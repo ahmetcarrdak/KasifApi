@@ -18,13 +18,7 @@ namespace KasifApi.Services
         // Tüm okulları getirme
         public async Task<List<School>> GetAllSchoolsAsync()
         {
-            var schools = await _context.Schools.ToListAsync();
-            return schools.Select(s => new School
-            {
-                SchoolId = s.SchoolId,
-                Type = s.Type,
-                Title = s.Title
-            }).ToList();
+            return await _context.Schools.ToListAsync();
         }
 
         // Belirli bir okul bilgisi getirme

@@ -2,10 +2,9 @@ using KasifApi.Data;
 using KasifApi.Interfaces;
 using KasifApi.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 // Veritabanı bağlantısı (PostgreSQL)
 builder.Services.AddDbContext<KasifDbContext>(options =>
@@ -20,16 +19,17 @@ builder.Services.AddScoped<IPost, PostService>();
 builder.Services.AddScoped<IPostSaved, PostSavedService>();
 builder.Services.AddScoped<ISchool, SchoolService>();
 
-// CORS ayarları (isteğe bağlı, frontend ile iletişim için gerekli olabilir)
+// CORS yapılandırması
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
         policy.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader();
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     });
 });
+
 
 // JSON döndürme seçeneklerini yapılandır (isteğe bağlı)
 builder.Services.AddControllers()
@@ -45,20 +45,18 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// HTTP istek boru hattını yapılandır
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// CORS middleware'i ekle
-app.UseCors("AllowAll");
+// CORS kullanımı
+app.UseCors("AllowSpecificOrigins");
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 // Uygulamayı çalıştır
