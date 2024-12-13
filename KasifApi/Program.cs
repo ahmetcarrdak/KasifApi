@@ -44,11 +44,10 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // HTTP istek boru hattını yapılandır
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 app.MapGet("/test", () => "API is working!");
 
