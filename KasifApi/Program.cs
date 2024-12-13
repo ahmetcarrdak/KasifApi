@@ -43,11 +43,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.MapGet("/health", () => Results.Ok());
-
-// HTTPS yönlendirmesini kaldır
-// app.UseHttpsRedirection();
-
 // HTTP istek boru hattını yapılandır
 if (app.Environment.IsDevelopment())
 {

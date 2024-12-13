@@ -5,5 +5,3 @@ dockerfilePath = "./KasifApi/Dockerfile"
 [deploy]
 startCommand = "./KasifApi"
 restartPolicyType = "always"
-healthcheckPath = "/health"
-healthcheckTimeout = 30
