@@ -1,0 +1,7 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "./KasifApi/Dockerfile"
+
+[deploy]
+startCommand = "./KasifApi"
+restartPolicyType = "always"

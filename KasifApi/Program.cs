@@ -40,7 +40,6 @@ builder.Services.AddControllers()
 // Swagger/OpenAPI desteği
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
 var app = builder.Build();
 
@@ -51,14 +50,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapGet("/test", () => "API is working!");
+
+app.MapGet("/api/test", () => new { message = "Hello from KasifAPI!", timestamp = DateTime.UtcNow });
+
 // Bu satır HTTPS yönlendirmesini devre dışı bırakır
 app.UseHttpsRedirection();
-
 // CORS kullanımı
 app.UseCors("AllowAll");
 
 app.UseRouting();
-
 app.UseAuthorization();
 app.MapControllers();
 
