@@ -23,6 +23,14 @@ namespace KasifApi.Controllers
             return Ok(schools);
         }
 
+        // Logo ve İsimleri ile okulları getirme
+        [HttpGet("titleandlogo")]
+        public async Task<ActionResult<IEnumerable<dynamic>>> GetTitleAndLogoSchools()
+        {
+            var schools = await _schoolService.GetTitleAndLogoSchoolsAsync();
+            return Ok(schools);
+        }
+        
         // Belirli bir okul bilgisi getirme
         [HttpGet("{id}")]
         public async Task<ActionResult<School>> GetSchoolById(int id)

@@ -21,6 +21,20 @@ namespace KasifApi.Services
             return await _context.Schools.ToListAsync();
         }
 
+        // Logo ve İsimleri ile okulları getirme
+        public async Task<IEnumerable<dynamic>> GetTitleAndLogoSchoolsAsync()
+        {
+            return await _context.Schools
+                .Select(s => new 
+                {
+                    s.SchoolId,
+                    s.Title,
+                    s.Logo
+                })
+                .ToListAsync();
+        }
+
+        
         // Belirli bir okul bilgisi getirme
         public async Task<School?> GetSchoolByIdAsync(int id)
         {
@@ -31,12 +45,7 @@ namespace KasifApi.Services
                 return null;
             }
 
-            return new School
-            {
-                SchoolId = school.SchoolId,
-                Type = school.Type,
-                Title = school.Title
-            };
+            return school;
         }
 
         public async Task<string> CreateSchoolAsync(School school)

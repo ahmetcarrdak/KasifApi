@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ahmetcardak/Desktop/KasifApi/KasifApi/KasifApi.csproj": {}
+    "/Users/ahmetcardak/RiderProjects/KasifApi/KasifApi/KasifApi.csproj": {}
   },
   "projects": {
-    "/Users/ahmetcardak/Desktop/KasifApi/KasifApi/KasifApi.csproj": {
+    "/Users/ahmetcardak/RiderProjects/KasifApi/KasifApi/KasifApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ahmetcardak/Desktop/KasifApi/KasifApi/KasifApi.csproj",
+        "projectUniqueName": "/Users/ahmetcardak/RiderProjects/KasifApi/KasifApi/KasifApi.csproj",
         "projectName": "KasifApi",
-        "projectPath": "/Users/ahmetcardak/Desktop/KasifApi/KasifApi/KasifApi.csproj",
+        "projectPath": "/Users/ahmetcardak/RiderProjects/KasifApi/KasifApi/KasifApi.csproj",
         "packagesPath": "/Users/ahmetcardak/.nuget/packages/",
-        "outputPath": "/Users/ahmetcardak/Desktop/KasifApi/KasifApi/obj/",
+        "outputPath": "/Users/ahmetcardak/RiderProjects/KasifApi/KasifApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/ahmetcardak/.nuget/NuGet/NuGet.Config"
@@ -43,14 +43,6 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Amazon.Lambda.AspNetCoreServer": {
-              "target": "Package",
-              "version": "[9.0.3, )"
-            },
-            "Amazon.Lambda.AspNetCoreServer.Hosting": {
-              "target": "Package",
-              "version": "[1.7.3, )"
-            },
             "BCrypt.Net-Next": {
               "target": "Package",
               "version": "[4.0.3, )"
