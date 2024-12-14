@@ -25,13 +25,14 @@ namespace KasifApi.Services
         public async Task<IEnumerable<dynamic>> GetTitleAndLogoSchoolsAsync()
         {
             return await _context.Schools
-                .Select(s => new 
-                {
-                    s.SchoolId,
-                    s.Title,
-                    s.Logo
-                })
-                .ToListAsync();
+            .OrderBy(s => s.SchoolId) // SchoolId'ye göre sıralama
+            .Select(s => new 
+            {
+                s.SchoolId,
+                s.Title,
+                s.Logo
+            })
+            .ToListAsync();
         }
 
         
